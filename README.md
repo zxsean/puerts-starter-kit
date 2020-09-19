@@ -2,6 +2,7 @@
 
 使用腾讯的 [puerts](https://github.com/Tencent/puerts) 的 Unity 空项目，搭建好 TypeScript 编译调试工具，IDE配置等常用手脚架，不含任何游戏框架。
 
+提供 [webapi 兼容层](https://github.com/GodotExplorer/WebAPI)，实现部分常用的 WebAPI，并针对 Unity 优化了 console API。
 
 ### 必备知识
 - Unity 基础使用
