@@ -9,4 +9,5 @@ Logs/
 Assets/Scripts/Generated/
 Assets/Scripts/Generated.meta
 Assets/StreamingAssets/scripts.meta
-Assets/StreamingAssets/scripts/
+Assets/StreamingAssets/scripts/*
+!Assets/StreamingAssets/scripts/bootstrap.js
