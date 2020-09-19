@@ -5,7 +5,6 @@
 		"bundle:analyze": "webpack --config webpack.config.js --env.production --env.analyze",
 		"webapi:dev": "webpack --config webpack.config.js --watch --env.entry=webapi",
 		"webapi:publish": "webpack --config webpack.config.js --env.production --env.entry=webapi",
-		"tween.js:publish": "webpack --config webpack.config.js --env.production --env.entry=tweenjs",
 		"test": "webpack --config webpack.config.js --watch --env.entry=test",
 		"tslint": "tslint ./src/**/*.ts"
 	},

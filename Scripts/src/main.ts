@@ -1,5 +1,4 @@
 import { tiny } from 'csharp';
-import TWEEN from 'TWEEN';
 
 
 /** JavaScript 入口函数 */
@@ -30,7 +29,6 @@ class JavaScriptApplication {
 
 	private update(delta: number) {
 		WebAPI.tick();
-		TWEEN.update();
 	}
 
 	private lateUpdate(delta: number) {

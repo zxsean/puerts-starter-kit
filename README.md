@@ -6,7 +6,7 @@
 ### 必备知识
 - Unity 基础使用
 - TypeScript/JavaScript 语言
-- NodeJS 和 npm/yarn 工具链的使
+- NodeJS 和 npm/yarn
 
 没用过上述任何一项的请关闭此页面，也请不要向作者提问。
 
@@ -28,7 +28,6 @@
 2. 安装依赖：进入 `Scripts` 目录执行 `npm install` 或 `yarn install`
 3. 使用 VSCode 打开该项目，执行以下 npm 命令编译 JavaScript 库
     - `npm run webapi:publish` 或 `yarn webapi:publish` 编译 WebAPI 兼容库
-    - `npm run tween.js:publish` 或 `yarn tween.js:publish` 编译 tween.js 库
     - `npm run bundle:dev` 或 `yarn bundle:dev` 启动项目编译服务
 4. 使用 Unity 打开 `Assets/Scenes/main.unity` 入口场景，点击`重置调试目录` 将脚本目录设置为你的本机目录
 ![](screenshot/start.png)
@@ -47,7 +46,6 @@
 |bundle:analyze| 使用发布模式编译 `bundle.js` 并打开源代码分析服务 |
 |webapi:dev| 启动 webapi 模块的编译服务 |
 |webapi:publish| 使用发布模式编译 webapi 模块 |
-|tween.js:publish| 使用发布模式编译 tween.js 模块 |
 |test| 启动单元测试的编译服务 |
 |tslint| 执行代码静态分析 |
 

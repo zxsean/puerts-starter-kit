@@ -9,7 +9,6 @@
 			"src/game/view/ui/raw/**/*.ts",
 			"src/game/configs/excel.ts",
 			"src/addons/webapi/**/*.ts",
-			"src/addons/tweenjs/*.ts",
 			"src/addons/webapi/**/*.tsx"
 		]
 	},

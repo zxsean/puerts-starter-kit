@@ -8,13 +8,11 @@ const workSpaceDir = path.resolve(__dirname);
 const externals = {
 	csharp: 'csharp',
 	puerts: 'puerts',
-	TWEEN: 'TWEEN',
 };
 
 const entries = {
 	bundle: { input: 'src/main.ts', output: 'bundle' },
 	webapi: { input: 'src/addons/webapi/index.unity.ts', output: 'webapi'},
-	tweenjs: { input: 'src/addons/tweenjs/Index.ts', output: 'tween'},
 	test: { input: 'src/test/index.ts', output: 'bundle'},
 }
 
