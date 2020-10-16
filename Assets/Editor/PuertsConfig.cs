@@ -6,6 +6,13 @@ using UnityEngine;
 
 [Configure]
 public class ExamplesCfg {
+	
+	[CodeOutputDirectory]
+	static string GenerateDirectory {
+		get {
+			return Application.dataPath + "/Scripts/Generated/";
+		}
+	}
 
 	[Typing]
 	static IEnumerable<Type> Typings {

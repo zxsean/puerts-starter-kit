@@ -45,16 +45,16 @@ namespace tiny {
 		}
 
 		protected void FixedUpdate() {
-			if (JS_fixedUpdate != null) JS_fixedUpdate(Time.fixedDeltaTime);
+			if (JS_fixedUpdate != null) JS_fixedUpdate(Time.fixedUnscaledDeltaTime);
 		}
 
 		protected void Update() {
 			if (env != null) env.Tick();
-			if (JS_update != null) JS_update(Time.deltaTime);
+			if (JS_update != null) JS_update(Time.unscaledDeltaTime);
 		}
 
 		protected void LateUpdate() {
-			if (JS_lateUpdate != null) JS_lateUpdate(Time.deltaTime);
+			if (JS_lateUpdate != null) JS_lateUpdate(Time.unscaledDeltaTime);
 		}
 
 		protected void OnDestroy() {

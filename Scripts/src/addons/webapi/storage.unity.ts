@@ -30,6 +30,7 @@ class LocalStorage extends Storage {
 			let text = JSON.stringify(this._items, undefined, '\t');
 			stream.Write(text);
 			stream.Flush();
+			stream.Dispose();
 		} else {
 			throw new Error("Cannot open storage file " + this.$file);
 		}

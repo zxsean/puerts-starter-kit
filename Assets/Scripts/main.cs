@@ -20,6 +20,7 @@ namespace tiny {
 
 		protected new void Update() {
 			if (this.frameToWait == 0) {
+				frameToWait -= 1;
 				this.StartJavaScript();
 			}
 			base.Update();
