@@ -28,7 +28,11 @@ function timer_loop(){
 
 	for (const [id, timer] of processing_timers) {
 		if (timer.next_time <= now) {
-			if (timer.handler) timer.handler.apply(null, timer.args);
+			try {
+				if (timer.handler) timer.handler.apply(null, timer.args);
+			} catch (error) {
+				console.error(`Error in timer handler: ${error.message}\n${error.stack}`);
+			}
 			if (timer.oneshot) {
 				removing_timers.add(id);
 			} else {

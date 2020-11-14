@@ -1,4 +1,4 @@
-import required from './requires-port';
+import required from 'requires-port';
 import * as qs from './querystringify';
 
 const slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//

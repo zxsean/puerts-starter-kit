@@ -12,7 +12,7 @@ const scriptResources = new Map<string, UnityEngine.Object>();
 const emptyResources = new UnityEngine.Object();
 const isUnityEditor = UnityEngine.Application.isEditor;
 
-function print(type: LogType, showStack : boolean, ...args) {
+function print(type: LogType, showStack : boolean, ...args: unknown[]) {
 	let message = '';
 	for (let i = 0; i < args.length; i++) {
 		const element = args[i];
@@ -56,11 +56,11 @@ function print(type: LogType, showStack : boolean, ...args) {
 }
 
 const ConsoleObject = {
-	log: (...args) => print(LogType.Log, false, ...args),
-	info: (...args) => print(LogType.Log, true, ...args),
-	trace: (...args) => print(LogType.Log, true, ...args),
-	warn: (...args) => print(LogType.Warning, true, ...args),
-	error: (...args) => print(LogType.Error, true, ...args),
+	log: (...args: unknown[]) => print(LogType.Log, false, ...args),
+	info: (...args: unknown[]) => print(LogType.Log, true, ...args),
+	trace: (...args: unknown[]) => print(LogType.Log, true, ...args),
+	warn: (...args: unknown[]) => print(LogType.Warning, true, ...args),
+	error: (...args: unknown[]) => print(LogType.Error, true, ...args),
 	LOG_OBJECT_TO_JSON: false,
 };
 

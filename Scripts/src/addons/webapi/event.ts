@@ -65,7 +65,7 @@ export class Event {
 	 * Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise.
 	 */
 	get defaultPrevented(): boolean { return this._defaultPrevented; }
-	protected _defaultPrevented;
+	protected _defaultPrevented: boolean;
 
 	/**
 	 * Returns the event's phase, which is one of NONE, CAPTURING_PHASE, AT_TARGET, and BUBBLING_PHASE.
