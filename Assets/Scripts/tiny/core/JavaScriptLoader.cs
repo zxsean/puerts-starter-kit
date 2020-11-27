@@ -19,9 +19,15 @@ namespace tiny {
 			return true;
 #endif
 		}
-
+		public string GetScriptDebugPath(string filepath) {
+			if (filepath.StartsWith("puerts/")) {
+				return Path.Combine(Application.dataPath, "Libraries/Puerts/Src/Resources", filepath).Replace("\\", "/") + ".txt";
+			}
+			return System.IO.Path.Combine(debugRoot, filepath).Replace("\\", "/");
+		}
+		
 		public string ReadFile(string filepath, out string debugpath) {
-			debugpath = System.IO.Path.Combine(debugRoot, filepath);
+			debugpath = GetScriptDebugPath(filepath);
 			if (filepath.StartsWith("puerts/")) {
 				var asset = UnityEngine.Resources.Load<UnityEngine.TextAsset>(filepath);
 				return asset.text;

@@ -33,7 +33,7 @@ namespace tiny {
 				env.WaitDebugger();
 			}
 			// 加载启动JS脚本, 执行脚本 main 函数
-			var javascript_main = env.Eval<JavaScriptMain>("require('bootstrap.js');");
+			var javascript_main = env.Eval<JavaScriptMain>("require('bootstrap.js');", loader.GetScriptDebugPath("anonymous.js"));
 			javascript_main(this);
 		}
 
