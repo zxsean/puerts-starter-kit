@@ -121,7 +121,7 @@ declare module globalThis {
 	interface EventListenerRecord extends AddEventListenerOptions {
 		listener: EventListenerOrEventListenerObject;
 	}
-	
+
 	class EventTarget {
 		/**
 		 * Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
@@ -145,6 +145,13 @@ declare module globalThis {
 		 * Removes the event listener in target's event listener list with the same type, callback, and options.
 		 */
 		removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: EventListenerOptions | boolean): void;
+
+		/**
+		 * Removes the event listeners in target's event listener list with the same type
+		 *
+		 * Clear all listeners if type is `undefined`
+		 * */
+		clearEventListeners(type?: string): void;
 	}
 
 }

@@ -245,9 +245,9 @@ export class EventTarget {
 
 			if (typeof listener === 'function') {
 				listener.call(this, event);
-				if (recorder.once) {
-					once_listeners.push(recorder);
-				}
+			}
+			if (recorder.once) {
+				once_listeners.push(recorder);
 			}
 			if (event.defaultPrevented) break;
 		}
@@ -278,6 +278,19 @@ export class EventTarget {
 					break;
 				}
 			}
+		}
+	}
+
+	/**
+	 * Removes the event listeners in target's event listener list with the same type
+	 *
+	 * Clear all listeners if type is `undefined`
+	 * */
+	public clearEventListeners(type?: string): void {
+		if (typeof(type) === 'string') {
+			this._listeners[type] = undefined;
+		} else if (typeof(type) === 'undefined') {
+			this._listeners = {};
 		}
 	}
 }
