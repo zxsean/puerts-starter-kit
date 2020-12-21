@@ -1,6 +1,6 @@
 {{
 function parameterDef(pinfo) {
-    return (pinfo.IsParams ? ("..." + pinfo.Name) : pinfo.Name) + (pinfo.IsOptional?"?":"") + ": " + pinfo.TypeName;
+    return (pinfo.IsParams ? ("..." + pinfo.Name) : "$" + pinfo.Name) + (pinfo.IsOptional?"?":"") + ": " + pinfo.TypeName;
 }
 function typeKeyword(type) {
     if (type.IsDelegate) {
@@ -29,10 +29,8 @@ function typeDeclaration(type, level1) {
 }
 }}
 declare module 'csharp' {
-    interface $Ref<T> {}
-    
-    type $Extension<T1, T2> = {
-        [P in keyof T2] : T2[P] extends (obj:T1, ...args: infer P) => infer R ? (...args: P) => R : never;
+    interface $Ref<T> {
+        value: T
     }
     
     namespace System {
@@ -48,12 +46,16 @@ declare module 'csharp' {
     {{~it.NamespaceInfos :ns}}{{?ns.Name}}namespace {{=ns.Name}} {{{?}}
         {{~ns.Types :type}}{{=typeKeyword(type)}} {{=typeDeclaration(type, true)}} {{if(type.IsDelegate){}}= {{=type.DelegateDef}};{{?!type.IsGenericTypeDefinition}}
         var {{=type.Name}}: {new (func: {{=type.DelegateDef}}): {{=type.Name}};}{{?}}{{ } else if(type.IsEnum) { }}{ {{=type.EnumKeyValues}} }{{ }else{ }}{
-            {{~type.Properties :property}}{{?!type.IsInterface}}public {{?}}{{?property.IsStatic}}static {{?}}{{=property.Name}}: {{=property.TypeName}};
+            {{~type.Properties :property}}{{?type.IsInterface}}{{=property.Name}}: {{=property.TypeName}};{{?}}{{?!type.IsInterface}}{{?property.HasGetter}}public {{?property.IsStatic}}static {{?}}get {{=property.Name}}(): {{=property.TypeName}};{{?}}{{?property.HasGetter && property.HasSetter}}
+            {{?}}{{?property.HasSetter}}public {{?property.IsStatic}}static {{?}}set {{=property.Name}}(value: {{=property.TypeName}});{{?}}{{?!property.HasSetter && !property.HasGetter}}public {{?property.IsStatic}}static {{?}}{{=property.Name}}: {{=property.TypeName}};{{?}}{{?}}
             {{~}}{{~type.Methods :method}}{{?!type.IsInterface}}public {{?}}{{?method.IsStatic}}static {{?}}{{=method.Name}}({{~method.ParameterInfos :pinfo:idx}}{{?idx>0}}, {{?}}{{=parameterDef(pinfo)}}{{~}}){{=method.IsConstructor?"":":" + method.TypeName}};
             {{~}}
-        }{{}}}{{~type.ExtensionTypes :extensionType}}
-        interface {{=type.Name}} extends $Extension<{{=type.Name}}, typeof {{=extensionType}}> {}
-        {{~}}
+        }{{}}}{{?type.ExtensionMethods.length > 0}}
+        interface {{=type.Name}} {
+            {{~type.ExtensionMethods :method}}{{=method.Name}}({{~method.ParameterInfos :pinfo:idx}}{{?idx>0}}, {{?}}{{=parameterDef(pinfo)}}{{~}}):{{=method.TypeName}};
+            {{~}}
+        }
+        {{?}}
         {{~}}
     {{?ns.Name}}}{{?}}
     {{~}}

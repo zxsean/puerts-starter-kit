@@ -5,6 +5,7 @@ export interface IURL {
 	port?: number;
 	protocal?: string;
 }
+// @ts-ignore
 import Url from './thirdpart/url-parser/url-parser'
 
 export function parse_url(url: string): IURL {
